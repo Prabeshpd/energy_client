@@ -1,18 +1,20 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 
-import SignUpForm from "@/components/Register/Form";
-import toast from "@/lib/toast";
-import { RegisterPayload } from "@/types/auth";
+import { createUser } from '@/adapters/users';
+import SignUpForm from '@/components/Register/Form';
+import toast from '@/lib/toast';
+import { RegisterPayload } from '@/types/auth';
 
 const SignUp = () => {
   const handleFormSubmit = async (payload: RegisterPayload) => {
     try {
-      // await createUserAction(payload);
-      toast("The user account has been successfully created. You can now log in.", "success");
+      await createUser(payload);
+
+      toast('The user account has been successfully created. You can now log in.', 'success');
     } catch (err) {
-      toast("An issue occurred when creating the user account", "error");
+      toast('An issue occurred when creating the user account', 'error');
     }
   };
 

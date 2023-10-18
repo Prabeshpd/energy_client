@@ -1,3 +1,3 @@
-import BaseError from "./error";
+import BaseError from './error';
 
 export default class FirebaseError extends BaseError {}

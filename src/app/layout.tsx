@@ -1,14 +1,14 @@
-import "../stylesheets/application.scss";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import '../stylesheets/application.scss';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 
-import { ToastContainerWrapper } from "./toastContainerWrapper";
+import { ToastContainerWrapper } from './toastContainerWrapper';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Energy",
-  description: "Energy Consumption"
+  title: 'Energy',
+  description: 'Energy Consumption',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
