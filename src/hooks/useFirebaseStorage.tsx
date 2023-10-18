@@ -1,12 +1,12 @@
-import { useState, useContext } from "react";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { v4 as uuidv4 } from "uuid";
+import { useState, useContext } from 'react';
+import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
+import { v4 as uuidv4 } from 'uuid';
 
-import { FirebaseContext } from "@/context/firebase";
-import { IFirebaseServices } from "@/types/firebase";
+import { FirebaseContext } from '@/context/firebase';
+import { IFirebaseServices } from '@/types/firebase';
 
 export const useFirebaseStorage = () => {
-  const [imageUrl, setImageUrl] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>('');
   const [progressPercent, setProgressPercent] = useState<number>(0);
   const [isUploading, setIsUploading] = useState<boolean>(false);
 
@@ -21,7 +21,7 @@ export const useFirebaseStorage = () => {
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
-      "state_changed",
+      'state_changed',
       (snapshot) => {
         const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
         setProgressPercent(progress);

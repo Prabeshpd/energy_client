@@ -1,5 +1,5 @@
-import * as React from "react";
-import ClipLoader from "react-spinners/ClipLoader";
+import * as React from 'react';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 interface PropTypes {
   handleChange: (file: File) => void;

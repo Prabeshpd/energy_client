@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { Formik } from "formik";
-import ClipLoader from "react-spinners/ClipLoader";
+import { Formik } from 'formik';
+import ClipLoader from 'react-spinners/ClipLoader';
 
-import FileUploader from "@/components/FileUploader/FileUploader";
-import { useFirebaseStorage } from "@/hooks/useFirebaseStorage";
-import { RegisterPayload } from "@/types/auth";
+import FileUploader from '@/components/FileUploader/FileUploader';
+import { useFirebaseStorage } from '@/hooks/useFirebaseStorage';
+import { RegisterPayload } from '@/types/auth';
 
-import RegistrationSchema from "./schema";
+import RegistrationSchema from './schema';
 
 interface InjectedProps {
   handleFormSubmit: (payload: RegisterPayload) => void;
@@ -24,9 +24,9 @@ export function RegistrationForm(props: InjectedProps) {
   return (
     <Formik
       initialValues={{
-        name: "",
-        email: "",
-        password: ""
+        name: '',
+        email: '',
+        password: '',
       }}
       validationSchema={RegistrationSchema}
       onSubmit={async (values, { resetForm }) => {
@@ -34,10 +34,10 @@ export function RegistrationForm(props: InjectedProps) {
           name: values.name.trim(),
           email: values.email.trim(),
           password: values.password,
-          imageUrl
+          imageUrl,
         };
 
-        resetForm({ values: { name: "", email: "", password: "" } });
+        resetForm({ values: { name: '', email: '', password: '' } });
         await handleFormSubmit(payload);
       }}
     >
@@ -97,12 +97,20 @@ export function RegistrationForm(props: InjectedProps) {
                     onBlur={handleBlur}
                   />
                 </div>
-                {errors.password && touched.password && <p className="form__error">{errors.password}</p>}
+                {errors.password && touched.password && (
+                  <p className="form__error">{errors.password}</p>
+                )}
               </div>
 
               <div className="form__element sm:col-span-4 form__upload">
                 <div>
-                  {(imageUrl && <img className="rounded-full w-16 h-16" src={imageUrl} alt="image description" />) || (
+                  {(imageUrl && (
+                    <img
+                      className="rounded-full w-16 h-16"
+                      src={imageUrl}
+                      alt="image description"
+                    />
+                  )) || (
                     <svg fill="none" viewBox="0 0 24 24" height="4em" width="4em" {...props}>
                       <path
                         fill="currentColor"

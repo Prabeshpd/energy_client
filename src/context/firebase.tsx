@@ -1,7 +1,7 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
-import Firebase from "../config/firebase";
-import { IFirebaseServices } from "../types/firebase";
+import Firebase from '../config/firebase';
+import { IFirebaseServices } from '../types/firebase';
 
 const FirebaseContext = createContext<IFirebaseServices | null>(null);
 

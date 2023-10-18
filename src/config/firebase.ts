@@ -1,9 +1,9 @@
-import { initializeApp, FirebaseApp } from "firebase/app";
-import { getDatabase, Database } from "firebase/database";
-import { getStorage, FirebaseStorage } from "firebase/storage";
+import { initializeApp, FirebaseApp } from 'firebase/app';
+import { getDatabase, Database } from 'firebase/database';
+import { getStorage, FirebaseStorage } from 'firebase/storage';
 
-import FirebaseError from "@/lib/FirebaseError";
-import { IFirebaseServices } from "../types/firebase";
+import FirebaseError from '@/lib/FirebaseError';
+import { IFirebaseServices } from '../types/firebase';
 
 interface IFirebaseConfig {
   apiKey: string;
@@ -17,14 +17,14 @@ interface IFirebaseConfig {
 }
 
 const firebaseConfig: IFirebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY || "",
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN || "",
-  projectId: process.env.FIREBASE_PROJECT_ID || "",
-  databaseURL: process.env.FIREBASE_DATABASE_URL || "",
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || "",
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || "",
-  appId: process.env.FIREBASE_APP_ID || "",
-  measurementId: process.env.FIREBASE_MEASUREMENT_ID || ""
+  apiKey: process.env.FIREBASE_API_KEY || '',
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN || '',
+  projectId: process.env.FIREBASE_PROJECT_ID || '',
+  databaseURL: process.env.FIREBASE_DATABASE_URL || '',
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || '',
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || '',
+  appId: process.env.FIREBASE_APP_ID || '',
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID || '',
 };
 
 export default class Firebase {
@@ -37,7 +37,7 @@ export default class Firebase {
 
     if (!isValidFirebaseConfig) {
       throw new FirebaseError({
-        message: "Firebase application must be initialized and set in the environment variables"
+        message: 'Firebase application must be initialized and set in the environment variables',
       });
     }
 
