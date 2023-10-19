@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from '@/helpers/authentication';
 
 const middleware = async (req: NextRequest) => {
-  const token = getToken();
+  const cookie = req.cookies.get('auth-cookie');
   const url = req.nextUrl.pathname;
 
-  if (token && url.startsWith('/auth')) {
+  if (cookie && url.startsWith('/auth')) {
     return NextResponse.redirect(new URL('/', req.url));
   }
 
-  if (!token && !url.startsWith('/auth')) {
+  if (!cookie && !url.startsWith('/auth')) {
     return NextResponse.redirect(new URL('/auth/login', req.url));
   }
 };
