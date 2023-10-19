@@ -6,10 +6,10 @@ import userEvent from '@testing-library/user-event';
 import { RegistrationForm } from './Form';
 
 describe('SignUp Form:', () => {
-  const handleFormSubmit = jest.fn();
+  const registerUser = jest.fn();
 
   it('renders the component', () => {
-    render(<RegistrationForm handleFormSubmit={handleFormSubmit} />);
+    render(<RegistrationForm registerUser={registerUser} />);
 
     const inputNameElement = screen.getByPlaceholderText('Name');
     expect(inputNameElement).toHaveAttribute('type', 'text');
@@ -28,7 +28,7 @@ describe('SignUp Form:', () => {
   });
 
   it('submits the form"s input values on submit', async () => {
-    render(<RegistrationForm handleFormSubmit={handleFormSubmit} />);
+    render(<RegistrationForm registerUser={registerUser} />);
 
     const user = userEvent.setup();
 
@@ -39,7 +39,7 @@ describe('SignUp Form:', () => {
     await user.click(screen.getByRole('button', { name: /register/i }));
 
     await waitFor(() =>
-      expect(handleFormSubmit).toHaveBeenCalledWith({
+      expect(registerUser).toHaveBeenCalledWith({
         email: 'john.dee@gmail.com',
         name: 'John',
         password: 'Admin@123',

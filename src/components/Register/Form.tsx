@@ -10,7 +10,7 @@ import { RegisterPayload } from '@/types/auth';
 import RegistrationSchema from './schema';
 
 interface InjectedProps {
-  handleFormSubmit: (payload: RegisterPayload) => void;
+  registerUser: (payload: RegisterPayload) => void;
 }
 
 export function RegistrationForm(props: InjectedProps) {
@@ -20,7 +20,7 @@ export function RegistrationForm(props: InjectedProps) {
     await uploadFile(file);
   };
 
-  const { handleFormSubmit } = props;
+  const { registerUser } = props;
   return (
     <Formik
       initialValues={{
@@ -38,7 +38,7 @@ export function RegistrationForm(props: InjectedProps) {
         };
 
         resetForm({ values: { name: '', email: '', password: '' } });
-        await handleFormSubmit(payload);
+        await registerUser(payload);
       }}
     >
       {({ handleBlur, handleChange, handleSubmit, errors, touched, isSubmitting }) => (
