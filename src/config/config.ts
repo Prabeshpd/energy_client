@@ -7,6 +7,7 @@ export interface Config {
     login: string;
     createUser: string;
     fetchUser: string;
+    fetchProjects: string;
   };
 }
 
@@ -22,6 +23,9 @@ const config: Config = {
 
     // login
     login: '/login',
+
+    //projects
+    fetchProjects: '/projects',
   },
 };
 
