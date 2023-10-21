@@ -8,6 +8,7 @@ export interface Config {
     createUser: string;
     fetchUser: string;
     fetchProjects: string;
+    fetchProjectHistory: string;
   };
 }
 
@@ -26,6 +27,9 @@ const config: Config = {
 
     //projects
     fetchProjects: '/projects',
+
+    //projectHistory
+    fetchProjectHistory: '/projectHistories',
   },
 };
 
