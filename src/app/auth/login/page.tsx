@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import LogInForm from '@/components/Login/Form';
 import toast from '@/lib/toast';
-import { login } from '@/adapters/login';
+import { login } from '@/adapters/authentication';
 import { LoginRequest } from '@/types/auth';
 
 const Login = () => {

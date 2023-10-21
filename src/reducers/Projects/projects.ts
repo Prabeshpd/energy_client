@@ -1,26 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { extraReducers } from './actions';
+import { extraReducers, reducers } from './actions';
 
-import Project from '@/types/projects';
+import Project, { RealTimeProjectData } from '@/types/projects';
 
 export interface ProjectState {
   projects: Project[];
+  projectEnergyConsumptionDetail: RealTimeProjectData[];
   isLoadingFetchProject: boolean;
+  selectedProjects: RealTimeProjectData[];
 }
 
 const initialState: ProjectState = {
   projects: [],
+  projectEnergyConsumptionDetail: [],
   isLoadingFetchProject: false,
+  selectedProjects: [],
 };
 
 export const projectSlice = createSlice({
   name: 'projects',
   initialState,
-  reducers: {},
+  reducers,
   extraReducers: extraReducers,
 });
 
-export const projectActions = projectSlice.actions;
+export const { setProjectEnergyConsumptionDetail, setSelectedProjects } = projectSlice.actions;
 
 export default projectSlice.reducer;

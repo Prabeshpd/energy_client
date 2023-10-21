@@ -7,7 +7,7 @@ import {
 } from '@reduxjs/toolkit';
 
 import * as projectAdapter from '@/adapters/projects';
-import Project from '@/types/projects';
+import Project, { RealTimeProjectData } from '@/types/projects';
 
 import { ProjectState } from './projects';
 
@@ -55,4 +55,17 @@ export const extraReducers: (builder: ActionReducerMapBuilder<ProjectState>) => 
   builder.addCase(fetchProject.pending, (state: ProjectState) => {
     state.isLoadingFetchProject = true;
   });
+};
+
+export const reducers = {
+  setProjectEnergyConsumptionDetail: (
+    state: ProjectState,
+    action: PayloadAction<RealTimeProjectData[]>
+  ) => {
+    state.projectEnergyConsumptionDetail = action.payload;
+  },
+
+  setSelectedProjects: (state: ProjectState, action: PayloadAction<RealTimeProjectData[]>) => {
+    state.selectedProjects = action.payload;
+  },
 };
