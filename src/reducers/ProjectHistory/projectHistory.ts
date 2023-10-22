@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { extraReducers } from './actions';
 
-import { ProjectHistoryAnomaly, ProjectHistoryYear } from '@/types/ProjectHistory';
+import { ProjectHistoryAnomaly, ProjectHistoryYear } from '@/types/projectHistory';
 
 export interface ProjectState {
   projectsHistoryByYear: ProjectHistoryYear[];
