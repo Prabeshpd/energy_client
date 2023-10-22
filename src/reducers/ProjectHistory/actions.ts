@@ -7,7 +7,7 @@ import {
 } from '@reduxjs/toolkit';
 
 import * as projectHistoryAdapter from '@/adapters/projectHistory';
-import { ProjectHistoryYear, ProjectHistoryAnomaly } from '@/types/ProjectHistory';
+import { ProjectHistoryYear, ProjectHistoryAnomaly } from '@/types/projectHistory';
 
 import { ProjectState } from './projectHistory';
 

@@ -13,14 +13,12 @@ import storage from 'redux-persist/lib/storage';
 
 import users from './User/users';
 import projects from './Projects/projects';
-// import authentication from './Authentication/authentication';
-// import userBooks from './UserBooks/userBooks';
+import projectHistory from './ProjectHistory/projectHistory';
 
 export const rootReducers = combineReducers({
   users,
   projects,
-  //   authentication,
-  //   userBooks,
+  projectHistory,
 });
 
 const persistConfig = {
