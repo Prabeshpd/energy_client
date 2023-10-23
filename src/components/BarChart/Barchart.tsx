@@ -7,15 +7,6 @@ import { useAppSelector } from '@/hooks/store';
 
 const { useRef, useEffect } = React;
 
-interface Data {
-  label: string;
-  value: number;
-}
-
-interface BarChartProps {
-  data: Data[];
-}
-
 interface AxisBottomProps {
   scale: ScaleBand<string>;
   transform: string;
@@ -25,7 +16,7 @@ interface AxisLeftProps {
   scale: ScaleLinear<number, number, never>;
 }
 
-function AxisBottom({ scale, transform }: AxisBottomProps) {
+const AxisBottom = ({ scale, transform }: AxisBottomProps) => {
   const ref = React.useRef<SVGGElement>(null);
 
   React.useEffect(() => {
@@ -34,10 +25,10 @@ function AxisBottom({ scale, transform }: AxisBottomProps) {
     }
   }, [scale]);
 
-  return <g ref={ref} transform={transform} color="black" />;
-}
+  return <g ref={ref} transform={transform} color="white" />;
+};
 
-function AxisLeft({ scale }: AxisLeftProps) {
+const AxisLeft = ({ scale }: AxisLeftProps) => {
   const ref = useRef<SVGGElement>(null);
 
   useEffect(() => {
@@ -46,8 +37,8 @@ function AxisLeft({ scale }: AxisLeftProps) {
     }
   }, [scale]);
 
-  return <g ref={ref} color="black" />;
-}
+  return <g ref={ref} color="white" />;
+};
 
 const BarChart = () => {
   const { projectEnergyConsumptionDetail, selectedProjects } = useAppSelector((state) => ({
@@ -61,7 +52,7 @@ const BarChart = () => {
     value: data.energyConsumption,
   }));
 
-  const margin = { top: 0, right: 0, bottom: 0, left: 0 };
+  const margin = { top: 10, right: 0, bottom: 20, left: 30 };
   const width = 500 - margin.left - margin.right;
   const height = 300 - margin.top - margin.bottom;
 
@@ -71,7 +62,7 @@ const BarChart = () => {
     .padding(0.5);
 
   const scaleY = scaleLinear()
-    .domain([0, Math.max(...chartData.map(({ value }) => value))])
+    .domain([0, Math.max(...chartData.map(({ value }) => value)) + 5])
     .range([height, 0]);
 
   return (
@@ -80,14 +71,24 @@ const BarChart = () => {
         <AxisBottom scale={scaleX} transform={`translate(0, ${height})`} />
         <AxisLeft scale={scaleY} />
         {chartData.map(({ value, label }) => (
-          <rect
-            key={`bar-${label}`}
-            x={scaleX(label)}
-            y={scaleY(value)}
-            width={scaleX.bandwidth()}
-            height={height - scaleY(value)}
-            fill="black"
-          />
+          <>
+            <rect
+              key={`bar-${label}`}
+              x={scaleX(label)}
+              y={scaleY(value)}
+              width={scaleX.bandwidth()}
+              height={height - scaleY(value)}
+              fill="black"
+            />
+            <text
+              x={(scaleX(label) ?? 0) + 5}
+              y={scaleY(value) - 5}
+              fill="white"
+              fontSize={'0.8rem'}
+            >
+              {value} kw
+            </text>
+          </>
         ))}
       </g>
     </svg>

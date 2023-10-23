@@ -5,9 +5,10 @@ import * as React from 'react';
 import { isArray } from 'lodash';
 import Select, { MultiValue } from 'react-select';
 
-import Map from '@/components/Map/Map';
-import HeatChart from '@/components/HeatChart/HeatChart';
 import BarChart from '@/components/BarChart/Barchart';
+import ConsumptionOverview from '@/components/ConsumptionOverview/ConsumptionOverview';
+import HeatChart from '@/components/HeatChart/HeatChart';
+import Map from '@/components/Map/Map';
 
 import { useAppDispatch, useAppSelector } from '@/hooks/store';
 import { useUserFirebaseDatabase } from '@/hooks/useFirebaseDatabase';
@@ -98,6 +99,7 @@ export default function Dashboard() {
           <HeatChart />
         </div>
         <div className="layout-chart-app">
+          <ConsumptionOverview />
           <BarChart />
         </div>
       </div>

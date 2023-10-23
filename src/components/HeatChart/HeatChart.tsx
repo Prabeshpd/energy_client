@@ -8,7 +8,7 @@ import toast from '@/lib/toast';
 import { fetchProjectHistoryByYear } from '@/reducers/ProjectHistory/actions';
 
 interface HeatMapData {
-  time: Date;
+  time: string;
   value: number;
 }
 
