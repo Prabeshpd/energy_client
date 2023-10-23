@@ -66,32 +66,40 @@ const BarChart = () => {
     .range([height, 0]);
 
   return (
-    <svg width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}>
-      <g transform={`translate(${margin.left}, ${margin.top})`}>
-        <AxisBottom scale={scaleX} transform={`translate(0, ${height})`} />
-        <AxisLeft scale={scaleY} />
-        {chartData.map(({ value, label }) => (
-          <>
-            <rect
-              key={`bar-${label}`}
-              x={scaleX(label)}
-              y={scaleY(value)}
-              width={scaleX.bandwidth()}
-              height={height - scaleY(value)}
-              fill="black"
-            />
-            <text
-              x={(scaleX(label) ?? 0) + 5}
-              y={scaleY(value) - 5}
-              fill="white"
-              fontSize={'0.8rem'}
-            >
-              {value} kw
-            </text>
-          </>
-        ))}
-      </g>
-    </svg>
+    <div className="bar-chart">
+      <div className="bar-chart__header">Usage</div>
+      <div className="bar-chart__body">
+        <svg
+          width={width + margin.left + margin.right}
+          height={height + margin.top + margin.bottom}
+        >
+          <g transform={`translate(${margin.left}, ${margin.top})`}>
+            <AxisBottom scale={scaleX} transform={`translate(0, ${height})`} />
+            <AxisLeft scale={scaleY} />
+            {chartData.map(({ value, label }) => (
+              <>
+                <rect
+                  key={`bar-${label}`}
+                  x={scaleX(label)}
+                  y={scaleY(value)}
+                  width={scaleX.bandwidth()}
+                  height={height - scaleY(value)}
+                  fill="black"
+                />
+                <text
+                  x={(scaleX(label) ?? 0) + 5}
+                  y={scaleY(value) - 5}
+                  fill="white"
+                  fontSize={'0.8rem'}
+                >
+                  {value} kw
+                </text>
+              </>
+            ))}
+          </g>
+        </svg>
+      </div>
+    </div>
   );
 };
 
