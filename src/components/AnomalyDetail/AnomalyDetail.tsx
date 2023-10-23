@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/store';
 import toast from '@/lib/toast';
 import { fetchProjectHistoryByAnomaly } from '@/reducers/ProjectHistory/actions';
 
-const ProjectAnomaly = () => {
+const AnomalyDetail = () => {
   const dispatch = useAppDispatch();
 
   const { projectHistoryByAnomaly, isLoading, projects } = useAppSelector((state) => ({
@@ -52,4 +52,4 @@ const ProjectAnomaly = () => {
   );
 };
 
-export default ProjectAnomaly;
+export default AnomalyDetail;

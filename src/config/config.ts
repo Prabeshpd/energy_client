@@ -5,6 +5,7 @@ export interface Config {
   apiVersion: string;
   endpoints: {
     login: string;
+    refreshToken: string;
     createUser: string;
     fetchUser: string;
     fetchProjects: string;
@@ -24,6 +25,7 @@ const config: Config = {
 
     // login
     login: '/auth/login',
+    refreshToken: '/auth/refresh',
 
     //projects
     fetchProjects: '/projects',

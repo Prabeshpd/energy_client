@@ -26,4 +26,5 @@ export const setToken = (accessToken: string, refreshToken: string): void => {
 
 export const clearToken = (): void => {
   localStorage.removeItem(authTokenKey);
+  localStorage.removeItem('persist:root');
 };
