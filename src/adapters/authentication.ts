@@ -17,6 +17,12 @@ export const login = async (loginPayload: LoginRequest) => {
   return data;
 };
 
+export const refreshToken = async (refreshToken: string) => {
+  const { data } = await post(config.endpoints.refreshToken, { refreshToken });
+
+  return data;
+};
+
 export const logout = () => {
   clearToken();
   clearAuthTokenCookie();

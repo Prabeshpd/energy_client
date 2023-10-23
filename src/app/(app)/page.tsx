@@ -5,6 +5,7 @@ import * as React from 'react';
 import { isArray } from 'lodash';
 import Select, { MultiValue } from 'react-select';
 
+import AnomalyDetail from '@/components/AnomalyDetail/AnomalyDetail';
 import BarChart from '@/components/BarChart/Barchart';
 import ConsumptionOverview from '@/components/ConsumptionOverview/ConsumptionOverview';
 import HeatChart from '@/components/HeatChart/HeatChart';
@@ -98,9 +99,10 @@ export default function Dashboard() {
           <Map />
           <HeatChart />
         </div>
-        <div className="layout-chart-app">
+        <div className="layout-app__chart">
           <ConsumptionOverview />
           <BarChart />
+          <AnomalyDetail />
         </div>
       </div>
     </main>

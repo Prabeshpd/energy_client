@@ -8,6 +8,8 @@ import axios, {
 
 import Config from '@/config/config';
 import { clearToken, getToken } from '@/helpers/authentication';
+import { clearAuthTokenCookie } from '@/lib/cookies';
+import { refreshToken } from '@/services/refreshtoken';
 
 export const authenticatedHeader = (): string => `Bearer ${getToken()?.accessToken}`;
 
@@ -27,15 +29,16 @@ export const errorInterceptor = async (error: AxiosError<unknown>): Promise<unkn
       const tokens = getToken();
       const blankResponse = { data: {} };
 
-      //   if (tokens?.refreshToken) {
-      //     await refreshToken(tokens.refreshToken);
+      if (tokens?.refreshToken) {
+        await refreshToken(tokens.refreshToken);
 
-      //     error.config.headers.set("Authorization", authenticatedHeader());
+        error.config.headers.set('Authorization', authenticatedHeader());
 
-      //     return axios.request(error.config);
-      //   }
+        return axios.request(error.config);
+      }
 
       clearToken();
+      clearAuthTokenCookie();
 
       window.location.href = '/auth/login';
 

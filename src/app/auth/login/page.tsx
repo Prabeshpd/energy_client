@@ -16,7 +16,6 @@ const Login = () => {
   const callbackUrl = searchParams.get('callbackUrl') || '/';
 
   const handleFormSubmit = async (payload: LoginRequest) => {
-    console.log({ payload });
     const response = await login({
       email: payload?.email,
       password: payload?.password,
