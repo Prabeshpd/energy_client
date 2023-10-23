@@ -5,9 +5,11 @@ export interface Project {
 }
 
 export interface RealTimeProjectData extends Project {
-  coordinates: [number, number];
+  coordinates: string;
   districtName: string;
   energyConsumption: number;
+  humidity: number;
+  temperature: number;
 }
 
 export default Project;

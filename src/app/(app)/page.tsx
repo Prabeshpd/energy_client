@@ -1,18 +1,26 @@
 'use client';
 
 import * as React from 'react';
+
+import { isArray } from 'lodash';
 import Select, { MultiValue } from 'react-select';
 
 import Map from '@/components/Map/Map';
+import HeatChart from '@/components/HeatChart/HeatChart';
+import BarChart from '@/components/BarChart/Barchart';
+
 import { useAppDispatch, useAppSelector } from '@/hooks/store';
 import { useUserFirebaseDatabase } from '@/hooks/useFirebaseDatabase';
+
 import toast from '@/lib/toast';
+
 import { fetchProject } from '@/reducers/Projects/actions';
 import { fetchUser } from '@/reducers/User/actions';
 import {
   setSelectedProjects,
   setProjectEnergyConsumptionDetail,
 } from '@/reducers/Projects/projects';
+
 import { RealTimeProjectData } from '@/types/projects';
 
 export default function Dashboard() {
@@ -45,20 +53,16 @@ export default function Dashboard() {
     value: project.id,
   }));
 
-  const firebaseData = useUserFirebaseDatabase(user.id);
+  const { loading, snapshots, error } = useUserFirebaseDatabase(user.id);
 
-  if (!firebaseData) return;
+  React.useEffect(() => {
+    if (!snapshots || (isArray(snapshots) && !snapshots.length)) return;
 
-  const { loading, snapshots, error } = firebaseData;
-
-  if (snapshots) {
-    const data = snapshots as unknown as RealTimeProjectData[];
-
-    dispatch(setProjectEnergyConsumptionDetail(data));
-  }
+    dispatch(setProjectEnergyConsumptionDetail(snapshots as unknown as RealTimeProjectData[]));
+  }, [loading, snapshots]);
 
   if (error) {
-    toast('Cannot fetch data from firebase', 'error');
+    toast('Cannot load project details', 'error');
   }
 
   const handleProjectChange = (selectedValues: MultiValue<{ label: string; value: string }>) => {
@@ -72,8 +76,9 @@ export default function Dashboard() {
 
   return (
     <main className="layout-app">
-      <header>Energy Dashboard</header>
-      <div>
+      <header className="layout-app__heading">Energy Dashboard</header>
+
+      <div className="layout-app__select">
         <Select
           name="categories"
           id="list-projects"
@@ -87,7 +92,15 @@ export default function Dashboard() {
           isClearable={true}
         />
       </div>
-      <Map />
+      <div className="layout-app__body">
+        <div className="layout-app__chart">
+          <Map />
+          <HeatChart />
+        </div>
+        <div className="layout-chart-app">
+          <BarChart />
+        </div>
+      </div>
     </main>
   );
 }

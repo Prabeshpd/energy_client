@@ -15,15 +15,15 @@ export interface Config {
 const config: Config = {
   nodeEnv: process.env.NODE_ENV,
   env: process.env.REACT_APP_ENV || 'dev',
-  apiBaseUrl: process.env.REACT_BASE_API_URL || 'http://localhost:3000',
+  apiBaseUrl: process.env.REACT_BASE_API_URL || 'http://localhost:3001/api/v1',
   apiVersion: '/v1',
   endpoints: {
     // user
-    fetchUser: '/users/:id',
+    fetchUser: '/users/me',
     createUser: '/users',
 
     // login
-    login: '/login',
+    login: '/auth/login',
 
     //projects
     fetchProjects: '/projects',

@@ -1,0 +1,51 @@
+.detail-user {
+  background-color: #374151;
+  height: 100vh;
+
+  &__card {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 5rem;
+    background-color: #1f2937;
+    border-width: 1px;
+    border-color: #374151;
+    overflow: scroll;
+
+    @layer components {
+      @apply shadow;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    border-radius: 9999px;
+    width: 8rem;
+    height: auto;
+
+    @media (min-width: 768px) {
+      border-radius: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      width: 12rem;
+      height: auto;
+    }
+  }
+
+  &__header {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color: #374151;
+  }
+
+  &__info {
+    margin-bottom: 1.25rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: #9ca3af;
+  }
+}

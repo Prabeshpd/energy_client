@@ -23,7 +23,7 @@ const Header = () => {
             Home
           </Link>
           <Link
-            href="/upload"
+            href="/profile"
             data-test-id="app-header-profile-nav"
             className={classNames('app-header__link', {
               'app-header__link--active': segment === 'profile',
