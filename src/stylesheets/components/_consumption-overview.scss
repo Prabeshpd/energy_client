@@ -1,0 +1,29 @@
+.consumption-overview {
+  border-width: 1px;
+  border-color: #ffff;
+  padding: 2rem;
+  margin: 2rem;
+
+  &__header {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color: #ffff;
+  }
+
+  &__body {
+    display: flex;
+    margin: 2rem;
+    padding: 1rem;
+    border-width: 1px;
+    border-color: #374151;
+    @layer components {
+      @apply shadow-lg;
+    }
+  }
+
+  &__info {
+    margin: 2rem;
+  }
+}

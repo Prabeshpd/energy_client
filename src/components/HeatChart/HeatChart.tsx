@@ -39,29 +39,34 @@ const HeatChart = () => {
   const colorMultiplier = 1 / (max - min);
 
   return (
-    <div className="timeline">
-      <div className="timeline-months">
-        {MONTHS.map((monthName) => {
-          return <div className={`timeline-months-month ${monthName}`}>{monthName}</div>;
-        })}
-      </div>
+    <div className="heat-map">
+      <div className="heat-map__header">Data Plant Efficiency KPI</div>
+      <div className="heat-map__body">
+        <div className="timeline">
+          <div className="timeline-months">
+            {MONTHS.map((monthName) => {
+              return <div className={`timeline-months-month ${monthName}`}>{monthName}</div>;
+            })}
+          </div>
 
-      <div className="timeline-body">
-        <div className="timeline-weekdays">
-          {WEEK_DAYS.map((day) => (
-            <div className="timeline-weekdays-weekday">{day}</div>
-          ))}
-        </div>
+          <div className="timeline-body">
+            <div className="timeline-weekdays">
+              {WEEK_DAYS.map((day) => (
+                <div className="timeline-weekdays-weekday">{day}</div>
+              ))}
+            </div>
 
-        <div className="timeline-cells">
-          {projectHistoryByYear.map((projectHistory: HeatMapData) => {
-            const alpha = colorMultiplier * projectHistory.value;
-            let style = {
-              backgroundColor: `rgba(3, 160, 3, ${alpha})`,
-            };
+            <div className="timeline-cells">
+              {projectHistoryByYear.map((projectHistory: HeatMapData) => {
+                const alpha = colorMultiplier * projectHistory.value;
+                let style = {
+                  backgroundColor: `rgba(3, 160, 3, ${alpha})`,
+                };
 
-            return <div className="timeline-cells-cell" style={style}></div>;
-          })}
+                return <div className="timeline-cells-cell" style={style}></div>;
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>

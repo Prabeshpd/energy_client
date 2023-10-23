@@ -14,6 +14,7 @@ const ConsumptionOverview = () => {
 
   return (
     <div className="consumption-overview">
+      <div className="consumption-overview__header">Consumption Overview Detail</div>
       <div className="consumption-overview__body">
         <div className="consumption-overview__info">
           <header>Total Energy Consumption</header>

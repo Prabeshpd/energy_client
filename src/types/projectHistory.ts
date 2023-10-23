@@ -5,7 +5,6 @@ export interface ProjectHistoryYear {
 
 export interface ProjectHistoryAnomaly {
   projectId: string;
-  maxEnergyConsumption: number;
-  minEnergyConsumption: number;
-  time: string;
+  maximumEnergyConsumption: number;
+  minimumEnergyConsumption: number;
 }
