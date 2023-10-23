@@ -1,4 +1,7 @@
+'use client';
+
 import Header from '@/components/Header/Header';
+import { FirebaseProvider } from '@/context/firebase';
 import ReduxProvider from '@/reducers/provider';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -6,8 +9,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         <ReduxProvider>
-          <Header />
-          {children}
+          <FirebaseProvider>
+            <Header />
+            {children}
+          </FirebaseProvider>
         </ReduxProvider>
       </body>
     </html>

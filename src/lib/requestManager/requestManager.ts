@@ -59,6 +59,7 @@ export const defaultOptions = (): {
   baseURL: `${Config.apiBaseUrl}/`,
   headers: {
     'Content-Type': 'application/json',
+    Authorization: authenticatedHeader(),
   },
 });
 

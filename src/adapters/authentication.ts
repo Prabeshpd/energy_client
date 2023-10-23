@@ -7,12 +7,14 @@ import { LoginRequest, LoginResponse } from '@/types/auth';
 import { post } from './base';
 
 export const login = async (loginPayload: LoginRequest) => {
-  const response = (await post(config.endpoints.login, loginPayload)) as unknown as LoginResponse;
+  const { data } = (await post(config.endpoints.login, loginPayload)) as unknown as {
+    data: LoginResponse;
+  };
 
-  setToken(response.accessToken, response.refreshToken);
-  setAuthTokenCookie(response.accessToken);
+  setToken(data.accessToken, data.refreshToken);
+  setAuthTokenCookie(data.accessToken);
 
-  return response;
+  return data;
 };
 
 export const logout = () => {

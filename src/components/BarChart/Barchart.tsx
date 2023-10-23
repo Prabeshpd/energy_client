@@ -3,6 +3,8 @@ import * as React from 'react';
 import { scaleBand, ScaleBand, scaleLinear, ScaleLinear } from 'd3-scale';
 import { select, axisBottom, axisLeft } from 'd3';
 
+import { useAppSelector } from '@/hooks/store';
+
 const { useRef, useEffect } = React;
 
 interface Data {
@@ -21,13 +23,6 @@ interface AxisBottomProps {
 
 interface AxisLeftProps {
   scale: ScaleLinear<number, number, never>;
-}
-
-interface BarsProps {
-  data: BarChartProps['data'];
-  height: number;
-  scaleX: AxisBottomProps['scale'];
-  scaleY: AxisLeftProps['scale'];
 }
 
 function AxisBottom({ scale, transform }: AxisBottomProps) {
@@ -54,35 +49,29 @@ function AxisLeft({ scale }: AxisLeftProps) {
   return <g ref={ref} color="black" />;
 }
 
-function Bars({ data, height, scaleX, scaleY }: BarsProps) {
-  return (
-    <>
-      {data.map(({ value, label }) => (
-        <rect
-          key={`bar-${label}`}
-          x={scaleX(label)}
-          y={scaleY(value)}
-          width={scaleX.bandwidth()}
-          height={height - scaleY(value)}
-          fill="black"
-        />
-      ))}
-    </>
-  );
-}
+const BarChart = () => {
+  const { projectEnergyConsumptionDetail, selectedProjects } = useAppSelector((state) => ({
+    projectEnergyConsumptionDetail: state.projects.projectEnergyConsumptionDetail,
+    selectedProjects: state.projects.selectedProjects,
+  }));
 
-function BarChart({ data }: BarChartProps) {
+  const projectData = selectedProjects.length ? selectedProjects : projectEnergyConsumptionDetail;
+  const chartData = projectData.map((data) => ({
+    label: data.projectName,
+    value: data.energyConsumption,
+  }));
+
   const margin = { top: 0, right: 0, bottom: 0, left: 0 };
   const width = 500 - margin.left - margin.right;
   const height = 300 - margin.top - margin.bottom;
 
   const scaleX = scaleBand()
-    .domain(data.map(({ label }) => label))
+    .domain(chartData.map(({ label }) => label))
     .range([0, width])
     .padding(0.5);
 
   const scaleY = scaleLinear()
-    .domain([0, Math.max(...data.map(({ value }) => value))])
+    .domain([0, Math.max(...chartData.map(({ value }) => value))])
     .range([height, 0]);
 
   return (
@@ -90,10 +79,19 @@ function BarChart({ data }: BarChartProps) {
       <g transform={`translate(${margin.left}, ${margin.top})`}>
         <AxisBottom scale={scaleX} transform={`translate(0, ${height})`} />
         <AxisLeft scale={scaleY} />
-        <Bars data={data} height={height} scaleX={scaleX} scaleY={scaleY} />
+        {chartData.map(({ value, label }) => (
+          <rect
+            key={`bar-${label}`}
+            x={scaleX(label)}
+            y={scaleY(value)}
+            width={scaleX.bandwidth()}
+            height={height - scaleY(value)}
+            fill="black"
+          />
+        ))}
       </g>
     </svg>
   );
-}
+};
 
 export default BarChart;
