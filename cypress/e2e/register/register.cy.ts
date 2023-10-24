@@ -4,6 +4,9 @@ describe('Register', () => {
   describe('given valid credentials', () => {
     it('creates user successfully', () => {
       cy.visit('/auth/register');
+      cy.interceptWithDelay('POST', '**/api/v1/users', 100, {
+        fixture: 'Register/valid.json',
+      });
 
       cy.findByTestId(REGISTRATION_SELECTOR.inputName).type('Default User');
       cy.findByTestId(REGISTRATION_SELECTOR.inputEmail).type('defaultUser@gmail.com');
@@ -24,7 +27,10 @@ describe('Register', () => {
   describe('given email is NOT unique', () => {
     it('throws error', () => {
       const [name, email, password] = ['default User', 'defaultUser@gmail.com', 'password'];
-      cy.register({ name, email, password });
+      cy.interceptWithDelay('POST', '**/api/v1/users', 100, {
+        statusCode: 422,
+        fixture: 'Register/error.json',
+      });
 
       cy.visit('/auth/register');
       cy.findByTestId(REGISTRATION_SELECTOR.inputName).type(name);

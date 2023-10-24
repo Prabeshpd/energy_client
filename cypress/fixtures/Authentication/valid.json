@@ -1,0 +1,10 @@
+{
+  "data": {
+    "user": {
+      "id": "1",
+      "name": "Default User"
+    },
+    "accessToken": "access-toke",
+    "refreshToken": "refresh-token"
+  }
+}

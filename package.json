@@ -9,9 +9,7 @@
     "lint": "next lint",
     "test": "jest",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --headed",
-    "cypress:test:open": "start-server-and-test dev 3000 cypress:open",
-    "cypress:test:run": "start-server-and-test start 3000 cypress:run"
+    "cypress:run": "cypress run --headed"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
@@ -63,7 +61,6 @@
     "react-tooltip": "^5.21.5",
     "redux-persist": "^6.0.0",
     "sass": "^1.64.0",
-    "start-server-and-test": "^2.0.0",
     "tailwindcss": "^3",
     "topojson": "^3.0.2",
     "tsx": "^3.12.7",

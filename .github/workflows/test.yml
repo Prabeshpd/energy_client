@@ -29,44 +29,31 @@ jobs:
       - name: Test
         run: yarn test
 
-  # test-ui:
-  #   name: Test UI
-  #   timeout-minutes: 10
-  #   runs-on: ubuntu-latest
-  #   container:
-  #     image: cypress/browsers:node18.12.0-chrome106-ff106
-  #     options: --user 1001
+  test-ui:
+    name: Test UI
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:node18.12.0-chrome106-ff106
+      options: --user 1001
 
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-  #     - name: Set Up Node
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '18'
+      - name: Set Up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-  #     - name: Install Dependencies
-  #       run: yarn
+      - name: Install Dependencies
+        run: yarn
 
-  #     - name: Create Env
-  #       run: |
-  #         touch .env
-  #         echo FIREBASE_API_KEY=${{secrets.FIREBASE_API_KEY}} >> .env
-  #         echo FIREBASE_AUTH_DOMAIN=${{secrets.FIREBASE_AUTH_DOMAIN}} >> .env
-  #         echo FIREBASE_PROJECT_ID=${{secrets.FIREBASE_PROJECT_ID}} >> .env
-  #         echo FIREBASE_STORAGE_BUCKET=${{secrets.FIREBASE_STORAGE_BUCKET}} >> .env
-  #         echo FIREBASE_MESSAGING_SENDER_ID=${{secrets.FIREBASE_MESSAGING_SENDER_ID}} >> .env
-  #         echo FIREBASE_APP_ID=${{secrets.FIREBASE_APP_ID}} >> .env
-  #         echo FIREBASE_MEASUREMENT_ID=${{secrets.FIREBASE_MEASUREMENT_ID}} >> .env
-  #         echo FIREBASE_DATABASE_URL=${{secrets.FIREBASE_DATABASE_URL}} >> .env
-
-  #     - name: Cypress Test
-  #       uses: cypress-io/github-action@v6
-  #       with:
-  #         browser: chrome
-  #         build: yarn build
-  #         start: |
-  #           yarn json:server:start
-  #           yarn dev
-  #         command: yarn cypress:run
+      - name: Cypress Test
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          build: yarn build
+          start: |
+            yarn start
+          command: yarn cypress:run
