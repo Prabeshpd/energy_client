@@ -16,18 +16,20 @@ const Login = () => {
   const callbackUrl = searchParams.get('callbackUrl') || '/';
 
   const handleFormSubmit = async (payload: LoginRequest) => {
-    const response = await login({
-      email: payload?.email,
-      password: payload?.password,
-    });
+    try {
+      const response = await login({
+        email: payload?.email,
+        password: payload?.password,
+      });
+      if (response?.user) {
+        toast('You have logged in successfully.', 'success');
 
-    if (response?.user) {
-      toast('You have logged in successfully.', 'success');
-
-      return router.push(callbackUrl);
+        return router.push(callbackUrl);
+      }
+      toast('The provided credentials are invalid.', 'error');
+    } catch (err) {
+      toast('The provided credentials are invalid.', 'error');
     }
-
-    toast('The provided credentials are invalid.', 'error');
   };
 
   return (
