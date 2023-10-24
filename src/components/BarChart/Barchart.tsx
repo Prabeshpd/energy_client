@@ -56,6 +56,13 @@ const BarChart = () => {
   const width = 500 - margin.left - margin.right;
   const height = 300 - margin.top - margin.bottom;
 
+  if (!chartData.length)
+    return (
+      <div className="bar-chart">
+        <div className="bar-chart__header">Usage</div>
+      </div>
+    );
+
   const scaleX = scaleBand()
     .domain(chartData.map(({ label }) => label))
     .range([0, width])
@@ -79,6 +86,7 @@ const BarChart = () => {
             {chartData.map(({ value, label }) => (
               <>
                 <rect
+                  data-test-id={`bar-chart-${label}`}
                   key={`bar-${label}`}
                   x={scaleX(label)}
                   y={scaleY(value)}
