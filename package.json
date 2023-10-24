@@ -47,6 +47,7 @@
     "jest-mock": "^29.6.2",
     "jest-mock-extended": "^3.0.4",
     "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "next": "13.5.5",
     "postcss": "^8",
     "postcss-import": "^15.1.0",

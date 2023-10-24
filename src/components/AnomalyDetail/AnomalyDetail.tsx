@@ -10,23 +10,27 @@ import { fetchProjectHistoryByAnomaly } from '@/reducers/ProjectHistory/actions'
 const AnomalyDetail = () => {
   const dispatch = useAppDispatch();
 
-  const { projectHistoryByAnomaly, isLoading, projects } = useAppSelector((state) => ({
-    projectHistoryByAnomaly: state.projectHistory.projectHistoryByAnomaly,
-    isLoading: state.projectHistory.isLoadingFetchProjectHistoryByAnomaly,
-    projects: state.projects.projects,
-  }));
+  const { projectHistoryByAnomaly, isLoading, projects, selectedProject } = useAppSelector(
+    (state) => ({
+      projectHistoryByAnomaly: state.projectHistory.projectHistoryByAnomaly,
+      isLoading: state.projectHistory.isLoadingFetchProjectHistoryByAnomaly,
+      projects: state.projects.projects,
+      selectedProject: state.projects.selectedProjects,
+    })
+  );
 
   React.useEffect(() => {
     async function dispatchFetchProjectHistory() {
       try {
-        await dispatch(fetchProjectHistoryByAnomaly());
+        const projectIds = selectedProject.map((project) => project.id);
+        await dispatch(fetchProjectHistoryByAnomaly({ projectIds }));
       } catch (err) {
         toast('Unable to show project anomaly', 'error');
       }
     }
 
     dispatchFetchProjectHistory();
-  }, []);
+  }, [selectedProject]);
 
   const data = projectHistoryByAnomaly.map((project) => {
     const projectDetail = projects.find((projectDetail) => projectDetail.id == project.projectId);

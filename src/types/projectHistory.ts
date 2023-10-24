@@ -8,3 +8,12 @@ export interface ProjectHistoryAnomaly {
   maximumEnergyConsumption: number;
   minimumEnergyConsumption: number;
 }
+
+export interface ProjectHistoryYearRequest {
+  year: string;
+  projectIds?: string[];
+}
+
+export interface ProjectHistoryAnomalyRequest {
+  projectIds?: string[];
+}
