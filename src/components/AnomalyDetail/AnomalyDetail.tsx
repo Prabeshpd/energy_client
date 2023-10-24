@@ -58,7 +58,7 @@ const AnomalyDetail = () => {
             <tbody data-test-id="anomaly-table-body" className="table__body">
               {data.map((datum) => {
                 return (
-                  <tr>
+                  <tr key={datum.name}>
                     <td headers="name-column">{datum.name}</td>
                     <td headers="max-energy-column">{datum.maxEnergyConsumption}</td>
                     <td headers="min-energy-column">{datum.minEnergyConsumption}</td>
