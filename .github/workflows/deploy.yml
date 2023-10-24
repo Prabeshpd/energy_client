@@ -48,6 +48,7 @@ jobs:
           echo FIREBASE_APP_ID=${{secrets.FIREBASE_APP_ID}} >> .env
           echo FIREBASE_MEASUREMENT_ID=${{secrets.FIREBASE_MEASUREMENT_ID}} >> .env
           echo FIREBASE_DATABASE_URL=${{secrets.FIREBASE_DATABASE_URL}} >> .env
+          echo NEXT_PUBLIC_REACT_BASE_API_URL=${{secrets.NEXT_PUBLIC_REACT_BASE_API_URL}} >> .env
 
       - name: Build Docker Image
         run: docker compose build
