@@ -19,7 +19,6 @@ WORKDIR /app
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
 
-RUN yarn run prisma generate
 RUN yarn build
 
 # Application runner

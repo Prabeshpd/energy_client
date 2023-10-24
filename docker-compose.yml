@@ -1,11 +1,11 @@
 version: '3.2'
 
 services:
-  application:
+  web:
     container_name: energy_client
     build:
       context: .
       dockerfile: Dockerfile
-    image: ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${BRANCH_TAG}
+    image: ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${VERSION}
     environment:
       - NODE_ENV=production
