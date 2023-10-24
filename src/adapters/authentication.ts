@@ -26,4 +26,5 @@ export const refreshToken = async (refreshToken: string) => {
 export const logout = () => {
   clearToken();
   clearAuthTokenCookie();
+  window.location.href = '/auth/login';
 };
