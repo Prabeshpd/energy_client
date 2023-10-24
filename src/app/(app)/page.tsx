@@ -24,17 +24,23 @@ import {
 } from '@/reducers/Projects/projects';
 
 import { RealTimeProjectData } from '@/types/projects';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 export default function Dashboard() {
-  const { projects, user, projectEnergyConsumptionDetail, isLoadingFetchProject } = useAppSelector(
-    (state) => ({
-      user: state.users.user,
-      isLoadingFetchUser: state.users.isLoadingFetchUser,
-      projects: state.projects.projects,
-      isLoadingFetchProject: state.projects.isLoadingFetchProject,
-      projectEnergyConsumptionDetail: state.projects.projectEnergyConsumptionDetail,
-    })
-  );
+  const {
+    projects,
+    user,
+    projectEnergyConsumptionDetail,
+    isLoadingFetchProject,
+    selectedProjects,
+  } = useAppSelector((state) => ({
+    user: state.users.user,
+    isLoadingFetchUser: state.users.isLoadingFetchUser,
+    projects: state.projects.projects,
+    isLoadingFetchProject: state.projects.isLoadingFetchProject,
+    projectEnergyConsumptionDetail: state.projects.projectEnergyConsumptionDetail,
+    selectedProjects: state.projects.selectedProjects,
+  }));
 
   const dispatch = useAppDispatch();
 
@@ -49,11 +55,6 @@ export default function Dashboard() {
 
     useFetchProjectDispatch();
   }, []);
-
-  const projectOptions = projects.map((project) => ({
-    label: project.projectName,
-    value: project.id,
-  }));
 
   const { loading, snapshots, error } = useUserFirebaseDatabase(user.id);
 
@@ -86,25 +87,34 @@ export default function Dashboard() {
           id="list-projects"
           aria-label="Category"
           className="react-select"
+          defaultValue={selectedProjects.map((project) => ({
+            label: project.projectName,
+            value: project.id,
+          }))}
           classNamePrefix="react-select"
           isLoading={isLoadingFetchProject}
-          options={projectOptions}
+          options={projects.map((project) => ({
+            label: project.projectName,
+            value: project.id,
+          }))}
           onChange={(selectedOption) => handleProjectChange(selectedOption)}
           isMulti
           isClearable={true}
         />
       </div>
-      <div className="layout-app__body">
-        <div className="layout-app__chart">
-          <Map />
-          <HeatChart />
+      {(loading && isLoadingFetchProject && <ClipLoader />) || (
+        <div className="layout-app__body">
+          <div className="layout-app__chart">
+            <Map />
+            <HeatChart />
+          </div>
+          <div className="layout-app__chart">
+            <ConsumptionOverview />
+            <BarChart />
+            <AnomalyDetail />
+          </div>
         </div>
-        <div className="layout-app__chart">
-          <ConsumptionOverview />
-          <BarChart />
-          <AnomalyDetail />
-        </div>
-      </div>
+      )}
     </main>
   );
 }

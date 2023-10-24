@@ -7,7 +7,12 @@ import {
 } from '@reduxjs/toolkit';
 
 import * as projectHistoryAdapter from '@/adapters/projectHistory';
-import { ProjectHistoryYear, ProjectHistoryAnomaly } from '@/types/projectHistory';
+import {
+  ProjectHistoryYear,
+  ProjectHistoryAnomaly,
+  ProjectHistoryYearRequest,
+  ProjectHistoryAnomalyRequest,
+} from '@/types/projectHistory';
 
 import { ProjectState } from './projectHistory';
 
@@ -19,12 +24,12 @@ export type FETCH_PROJECT_HISTORY_ANOMALY_ACTION = typeof FETCH_PROJECT_HISTORY_
 
 export const fetchProjectHistoryYearAction: AsyncThunkPayloadCreator<
   ProjectHistoryYear[],
-  string,
+  ProjectHistoryYearRequest,
   any
-> = async (year, { rejectWithValue }) => {
+> = async (requestParams, { rejectWithValue }) => {
   try {
     const project = (await projectHistoryAdapter.fetchProjectHistoryYear(
-      year
+      requestParams
     )) as unknown as ProjectHistoryYear[];
 
     return project;
@@ -43,12 +48,13 @@ export const fetchProjectHistoryYearAction: AsyncThunkPayloadCreator<
 
 export const fetchProjectHistoryAnomalyAction: AsyncThunkPayloadCreator<
   ProjectHistoryAnomaly[],
-  void,
+  ProjectHistoryAnomalyRequest,
   any
-> = async (_, { rejectWithValue }) => {
+> = async (requestParams, { rejectWithValue }) => {
   try {
-    const project =
-      (await projectHistoryAdapter.fetchProjectHistoryAnomaly()) as unknown as ProjectHistoryAnomaly[];
+    const project = (await projectHistoryAdapter.fetchProjectHistoryAnomaly(
+      requestParams
+    )) as unknown as ProjectHistoryAnomaly[];
 
     return project;
   } catch (error: any) {

@@ -1,5 +1,5 @@
 $cell-height: 10px;
-$cell-width: 10px;
+$cell-width: 8px;
 $cell-margin: 2px;
 $cell-weekdays-width: 30px;
 
@@ -44,7 +44,7 @@ $cell-weekdays-width: 30px;
     padding-left: $cell-weekdays-width;
 
     &-month {
-      width: $cell-width;
+      width: 48px;
       margin: $cell-margin;
       border: 1px solid transparent;
       font-size: 10px;
@@ -73,7 +73,7 @@ $cell-weekdays-width: 30px;
       display: inline-flex;
       flex-direction: column;
       flex-wrap: wrap;
-      height: #{(10 + 4) * 8}px;
+      height: #{(10 + 1) * 10}px;
 
       &-cell {
         height: $cell-height;
