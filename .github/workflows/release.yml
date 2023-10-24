@@ -32,8 +32,8 @@ jobs:
           BUILD_ID=$(echo $GITHUB_SHA | head -c7)
           VERSION=node_express+build.${BUILD_NUM}.${BUILD_ID}
           ARTIFACT_NAME=${VERSION}.zip
-          cp package.json dist/
-          (cd dist && zip -r9q ${{ github.workspace }}/${ARTIFACT_NAME} .)
+          cp package.json build/
+          (cd build && zip -r9q ${{ github.workspace }}/${ARTIFACT_NAME} .)
           ls -al ${{ github.workspace }}
           echo "version=${VERSION}" >> $GITHUB_ENV
           echo "artifact_name=${ARTIFACT_NAME}" >> $GITHUB_ENV
@@ -61,7 +61,7 @@ jobs:
         run: |
           VERSION=${{ steps.get_tag.outputs.tag }}
           ARTIFACT_NAME=${VERSION}.zip
-          cp package.json dist/
-          (cd dist && zip -r9q ${{ github.workspace }}/${ARTIFACT_NAME} .)
+          cp package.json build/
+          (cd build && zip -r9q ${{ github.workspace }}/${ARTIFACT_NAME} .)
           ls -al ${{ github.workspace }}
           echo "release_artifact_name=${ARTIFACT_NAME}" >> $GITHUB_ENV
