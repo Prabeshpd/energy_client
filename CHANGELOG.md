@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Prabeshpd/energy_client/compare/energy_client@1.1.0...energy_client@1.2.0) (2023-10-24)
+
+
+### Features
+
+* Add logout feature ([a41320b](https://github.com/Prabeshpd/energy_client/commit/a41320bc76c6805d5503577adf33529604e0b19b))
+
 # [1.1.0](https://github.com/Prabeshpd/energy_client/compare/energy_client@1.0.0...energy_client@1.1.0) (2023-10-24)
 
 
