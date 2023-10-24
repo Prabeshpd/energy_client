@@ -16,7 +16,7 @@ export interface Config {
 const config: Config = {
   nodeEnv: process.env.NODE_ENV,
   env: process.env.REACT_APP_ENV || 'dev',
-  apiBaseUrl: process.env.REACT_BASE_API_URL || 'http://localhost:3001/api/v1',
+  apiBaseUrl: process.env.NEXT_PUBLIC_REACT_BASE_API_URL || '',
   apiVersion: '/v1',
   endpoints: {
     // user
