@@ -49,6 +49,11 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
+      - name: Create Environment
+        run: |
+          touch .env
+          echo NEXT_PUBLIC_REACT_BASE_API_URL=http://localhost:3001/api/v1 >> .env
+
       - name: Cypress Test
         uses: cypress-io/github-action@v6
         with:
