@@ -1,0 +1,6 @@
+{
+  "statusCode": 422,
+  "error": {
+    "message": "User with email already exists"
+  }
+}

@@ -1,0 +1,29 @@
+.layout-app {
+  padding: 4rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  background-color: #374151;
+  color: #ffffff;
+
+  &__heading {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.75rem;
+  }
+
+  &__select {
+    max-width: 30rem;
+  }
+
+  &__body {
+    display: flex;
+  }
+
+  &__chart {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}

@@ -1,0 +1,24 @@
+.react-select {
+  margin: 1rem;
+  min-width: 10rem;
+  background-color: #374151;
+  color: #ffffff;
+  cursor: pointer;
+
+  & &__control {
+    background-color: #374151;
+    color: #ffffff;
+  }
+
+  & &__menu {
+    background-color: #374151;
+  }
+
+  & &__option:hover {
+    background-color: #9ca3af;
+  }
+
+  & &__single-value {
+    color: #ffffff;
+  }
+}

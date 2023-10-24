@@ -1,0 +1,25 @@
+.bar-chart {
+  border-width: 1px;
+  border-color: #ffff;
+  padding: 2rem;
+  margin: 2rem;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    margin: 2rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color: #ffff;
+  }
+
+  &__body {
+    border-width: 1px;
+    border-color: #374151;
+    @layer components {
+      @apply shadow-lg;
+    }
+  }
+}

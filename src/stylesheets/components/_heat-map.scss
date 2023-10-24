@@ -1,0 +1,92 @@
+$cell-height: 10px;
+$cell-width: 8px;
+$cell-margin: 2px;
+$cell-weekdays-width: 30px;
+
+.heat-map {
+  border-width: 1px;
+  border-color: #ffff;
+  padding: 2rem;
+  margin: 2rem;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    margin: 2rem;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    color: #ffff;
+  }
+
+  &__body {
+    border-width: 1px;
+    border-color: #374151;
+    @layer components {
+      @apply shadow-lg;
+    }
+  }
+}
+
+#container {
+  height: 514px;
+  width: 930px;
+  margin: 50px auto;
+}
+
+.timeline {
+  margin: 20px;
+  margin-bottom: 60px;
+
+  .timeline-months {
+    display: flex;
+    padding-left: $cell-weekdays-width;
+
+    &-month {
+      width: 48px;
+      margin: $cell-margin;
+      border: 1px solid transparent;
+      font-size: 10px;
+      padding: 1rem;
+    }
+  }
+
+  &-body {
+    display: flex;
+
+    .timeline-weekdays {
+      display: inline-flex;
+      flex-direction: column;
+      width: $cell-weekdays-width;
+
+      &-weekday {
+        font-size: 10px;
+        height: $cell-height;
+        border: 1px solid transparent;
+        margin: $cell-margin;
+        vertical-align: middle;
+      }
+    }
+
+    .timeline-cells {
+      display: inline-flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      height: #{(10 + 1) * 10}px;
+
+      &-cell {
+        height: $cell-height;
+        width: $cell-width;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin: $cell-margin;
+        border-radius: 2px;
+        background-color: rgba(0, 0, 0, 0.05);
+
+        &:hover {
+          border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+  }
+}

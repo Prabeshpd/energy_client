@@ -1,0 +1,21 @@
+.marks .land {
+  fill: 5d6679;
+}
+
+.marks .interiors {
+  fill: none;
+  stroke: #9ba2b2;
+}
+
+.marks .property {
+  border-radius: 50%;
+  width: 2rem;
+  fill: red;
+}
+
+.map-canvas {
+  margin: 2rem;
+  height: 30rem;
+  width: 50rem;
+  color: black;
+}

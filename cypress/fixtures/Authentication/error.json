@@ -1,0 +1,6 @@
+{
+  "statusCode": 422,
+  "error": {
+    "message": "Username and password did not match"
+  }
+}
