@@ -1,3 +1,11 @@
+# [1.1.0](https://github.com/Prabeshpd/energy_client/compare/energy_client@1.0.0...energy_client@1.1.0) (2023-10-24)
+
+
+### Features
+
+* Add api url to env ([70e38f2](https://github.com/Prabeshpd/energy_client/commit/70e38f2da1ee90b08b7745a2f44a9da6b006016a))
+* Add cd pipeline for deploy ([e728212](https://github.com/Prabeshpd/energy_client/commit/e728212b5e7727c541fce0432cedc3e5ed65304a))
+
 # 1.0.0 (2023-10-24)
 
 
