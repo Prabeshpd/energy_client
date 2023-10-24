@@ -19,7 +19,7 @@ const ToolTip = (toolTipProps: ToolTipProps) => {
       })}
     >
       {projectData.map((project) => (
-        <div>
+        <div key={project.id}>
           <p>District Name: {project.districtName}</p>
           <p>Project Name: {project.projectName}</p>
           <p>Energy Consumed: {project.energyConsumption}</p>

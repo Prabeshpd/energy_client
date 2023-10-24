@@ -45,7 +45,7 @@ export default function Dashboard() {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    async function useFetchProjectDispatch() {
+    async function fetchProjectDispatch() {
       try {
         await Promise.all([dispatch(fetchProject()), dispatch(fetchUser())]);
       } catch (err) {
@@ -53,7 +53,7 @@ export default function Dashboard() {
       }
     }
 
-    useFetchProjectDispatch();
+    fetchProjectDispatch();
   }, []);
 
   const { loading, snapshots, error } = useUserFirebaseDatabase(user.id);

@@ -55,13 +55,13 @@ const AnomalyDetail = () => {
             </tr>
           </thead>
           {(!isLoading && (
-            <tbody data-test-id="book-table-body" className="table__body">
+            <tbody data-test-id="anomaly-table-body" className="table__body">
               {data.map((datum) => {
                 return (
-                  <tr>
-                    <td headers="category-column">{datum.name}</td>
-                    <td headers="burrowed-number-column">{datum.maxEnergyConsumption}</td>
-                    <td headers="added-at-column">{datum.minEnergyConsumption}</td>
+                  <tr key={datum.name}>
+                    <td headers="name-column">{datum.name}</td>
+                    <td headers="max-energy-column">{datum.maxEnergyConsumption}</td>
+                    <td headers="min-energy-column">{datum.minEnergyConsumption}</td>
                   </tr>
                 );
               })}

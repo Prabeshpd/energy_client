@@ -16,13 +16,13 @@ const ConsumptionOverview = () => {
     <div className="consumption-overview">
       <div className="consumption-overview__header">Consumption Overview Detail</div>
       <div className="consumption-overview__body">
-        <div className="consumption-overview__info">
+        <div className="consumption-overview__info" data-test-id="consumption-overview-energy">
           <header>Total Energy Consumption</header>
-          {projectData.reduce((sum, project) => sum + project.energyConsumption, 0)}
+          <p>{projectData.reduce((sum, project) => sum + project.energyConsumption, 0)} kw</p>
         </div>
-        <div className="consumption-overview__info">
+        <div className="consumption-overview__info" data-test-id="consumption-overview-saving">
           <header>Total Cumulative Savings</header>
-          {projectData.reduce((sum, project) => sum + project.energyConsumption, 0)}
+          <p>{projectData.reduce((sum, project) => sum + project.energyConsumption, 0)} kw</p>
         </div>
       </div>
     </div>

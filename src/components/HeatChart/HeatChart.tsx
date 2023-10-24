@@ -49,14 +49,20 @@ const HeatChart = () => {
           <div className="timeline">
             <div className="timeline-months">
               {MONTHS.map((monthName) => {
-                return <div className={`timeline-months-month ${monthName}`}>{monthName}</div>;
+                return (
+                  <div key={monthName} className={`timeline-months-month ${monthName}`}>
+                    {monthName}
+                  </div>
+                );
               })}
             </div>
 
             <div className="timeline-body">
               <div className="timeline-weekdays">
                 {WEEK_DAYS.map((day) => (
-                  <div className="timeline-weekdays-weekday">{day}</div>
+                  <div key={day} className="timeline-weekdays-weekday">
+                    {day}
+                  </div>
                 ))}
               </div>
 
@@ -67,7 +73,13 @@ const HeatChart = () => {
                     backgroundColor: `rgba(3, 160, 3, ${alpha})`,
                   };
 
-                  return <div className="timeline-cells-cell" style={style}></div>;
+                  return (
+                    <div
+                      key={projectHistory.time}
+                      className="timeline-cells-cell"
+                      style={style}
+                    ></div>
+                  );
                 })}
               </div>
             </div>
