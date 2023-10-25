@@ -23,3 +23,29 @@ The main dashboard page and the profile page are considered client components. S
   - Consumption Overview
 
 ## Diagram
+
+## State Management
+
+For state management redux toolkit is used.
+
+## Data Flow
+
+- Project Data: For the project data. Api call is made to backend and data are stored in redux.
+
+  - State: Projects in Redux
+
+- Real Time Data: These are fetched directly from the firebase listeners to component. From the component they are sent to redux store
+
+  - State: RealTimeProjectData
+
+- History Data: API call is made to backend and the data are restored from time scale database stored in redux
+
+  - State: projectHistoryByYear, projectHistoryByAnomaly
+
+- Selected Sites: Since, after the selection of sites we need to display chart of only those sites. The selected sites are dispatched to redux store.
+
+  - State: Selected Site
+
+- Map TopoJSON Data: It is directly requested from the component of map.
+
+## Diagram
