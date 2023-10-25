@@ -15,4 +15,4 @@
 
 ## Overall System Diagram
 
-    ![Alt Text](../../wikiImages/System-Architecture.png)
+    ![System Architecture](https://github.com/Prabeshpd/energy_client/assets/39412015/e6dd98fa-1fde-4bf3-b7cd-db5a803570a8)
